@@ -15,17 +15,23 @@ router.get("/", (req, res) => {
   res.send(video);
 });
 
-router.get("/:vidId", (req, res, next) => {
+router.get("/:vidId", (req, res) => {
   const videoId = req.params.vidId;
   const videoDetails = getVideos();
+
   const video = videoDetails.find((vid) => {
     return vid.id === videoId;
   });
-  res.send(video);
+
+  if (video) {
+    res.json(video);
+  } else {
+    res.status(404).json({ error: "video not found" });
+  }
 });
 
 router.post("/", (req, res) => {
-  const { title, description,image } = req.body;
+  const { title, description, image } = req.body;
 
   if (!title || !description) {
     return res.status(400).json({
