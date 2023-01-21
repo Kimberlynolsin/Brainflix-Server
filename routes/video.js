@@ -16,18 +16,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:vidId", (req, res) => {
-  const videoId = req.params.vidId;
   const videoDetails = getVideos();
 
   const video = videoDetails.find((vid) => {
-    return vid.id === videoId;
+    return vid.id === req.params.vidId;
   });
 
-  if (video) {
-    res.json(video);
-  } else {
-    res.status(404).json({ error: "video not found" });
-  }
+  res.json(video);
 });
 
 router.post("/", (req, res) => {
