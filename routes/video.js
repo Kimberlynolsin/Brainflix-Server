@@ -38,13 +38,13 @@ router.post("/", (req, res) => {
     id: uuidv4(),
     title: title,
     channel: "Kimmy",
-    image: "http://localhost/images/upload-preview.jpeg",
+    image: 'http://localhost:8000/upload-preview.jpg',
     description: description,
     views: "31,001,023",
     likes: "2110,985",
     duration: "4:01",
     video: "https://project-2-api.herokuapp.com/stream",
-    timestamp: 1626032763000,
+    timestamp: new Date(),
     comments: [
       {
         id: uuidv4(),
