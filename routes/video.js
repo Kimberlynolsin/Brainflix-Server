@@ -25,7 +25,7 @@ router.get("/:vidId", (req, res, next) => {
 });
 
 router.post("/", (req, res) => {
-  const { title, description } = req.body;
+  const { title, description,image } = req.body;
 
   if (!title || !description) {
     return res.status(400).json({
@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
     id: uuidv4(),
     title: title,
     channel: "Kimmy",
-    image: 'http://localhost:8000/upload-preview.jpg',
+    image: image,
     description: description,
     views: "31,001,023",
     likes: "2110,985",
